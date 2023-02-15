@@ -72,5 +72,5 @@ function getCoords(position) {
 function showGeolocation(event) {
   navigator.geolocation.getCurrentPosition(getCoords);
 }
-let button = document.querySelector("button");
-button.addEventListener("click", showGeolocation);
+let button = document.querySelector("geolocate");
+geolocate.addEventListener("click", showGeolocation);
