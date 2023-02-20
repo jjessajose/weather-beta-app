@@ -85,3 +85,10 @@ p {
   font-size: 15px;
   margin-left: 300px;
 }
+
+ul {
+  list-style: none;
+  font-family: "poppins", sans-serif;
+  text-align: end;
+  font-size: 15px;
+}

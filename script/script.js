@@ -43,6 +43,14 @@ function showTemperature(response) {
   let temp = document.querySelector("#temp-value");
   let tempValue = Math.round(response.data.main.temp);
   temp.innerHTML = `${tempValue}°C`;
+
+  let humidity = document.querySelector("#humidity");
+  let humidityValue = Math.round(response.data.main.humidity);
+  humidity.innerHTML = `${humidityValue}`;
+
+  let wind = document.querySelector("#wind");
+  let windValue = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windValue}`;
 }
 
 function search(cityInput) {
