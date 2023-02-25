@@ -20,7 +20,7 @@ let months = [
 ];
 let month = months[currentTime.getMonth()];
 
-let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat,"];
+let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
 let day = days[currentTime.getDay()];
 
 todayDate.innerHTML = `${day}, ${date}th ${month}`;
@@ -41,8 +41,9 @@ function showTemperature(response) {
   h1.innerHTML = response.data.name;
 
   let temp = document.querySelector("#temp-value");
-  let tempValue = Math.round(response.data.main.temp);
-  temp.innerHTML = `${tempValue}°C`;
+  celsiusTemp = response.data.main.temp;
+  let tempValue = Math.round(celsiusTemp);
+  temp.innerHTML = `${tempValue}`;
 
   let humidity = document.querySelector("#humidity");
   let humidityValue = Math.round(response.data.main.humidity);
@@ -66,9 +67,6 @@ function citySubmit(event) {
   search(cityInput);
 }
 
-let citySearch = document.querySelector("#city-search");
-citySearch.addEventListener("submit", citySubmit);
-
 function getCoords(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -80,5 +78,30 @@ function getCoords(position) {
 function showGeolocation(event) {
   navigator.geolocation.getCurrentPosition(getCoords);
 }
+
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp-value");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp-value");
+  temp.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
 let button = document.querySelector("geolocate");
 geolocate.addEventListener("click", showGeolocation);
+
+let citySearch = document.querySelector("#city-search");
+citySearch.addEventListener("submit", citySubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);

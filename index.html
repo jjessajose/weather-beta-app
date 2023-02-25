@@ -32,9 +32,13 @@
         <div class="card-body">
           <h1 id="city-value">London</h1>
           <h2>
-            <span id="today-date"> Thurs, 29th Dec </span>
+            <span id="today-date"> </span>
             <br />
-            <span id="temp-value"> </span>
+            <strong><span id="temp-value"> </span> </strong>
+            <span>
+              <a href="#" id="celsius-link">C°</a> |
+              <a href="#" id="fahrenheit-link">F°</a>
+            </span>
           </h2>
 
           <h3>
@@ -55,6 +59,7 @@
                 placeholder="Enter city"
                 class="form-control"
                 autofocus
+                autocomplete="off"
               />
             </div>
 
