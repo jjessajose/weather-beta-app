@@ -82,6 +82,8 @@ function showGeolocation(event) {
 function displayFahrenheitTemp(event) {
   event.preventDefault();
   let temp = document.querySelector("#temp-value");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   temp.innerHTML = Math.round(fahrenheitTemp);
 }
@@ -89,6 +91,8 @@ function displayFahrenheitTemp(event) {
 function displayCelsiusTemp(event) {
   event.preventDefault();
   let temp = document.querySelector("#temp-value");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   temp.innerHTML = Math.round(celsiusTemp);
 }
 
