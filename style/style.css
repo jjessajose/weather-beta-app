@@ -61,12 +61,12 @@ form {
 }
 .btn-info {
   color: #352f44;
-  background-color: #eef2e2;
-  border-color: #d9e0c3;
+  background-color: #d9e0c3;
+  border-color: #d6dbc5;
 }
 .btn-info:hover {
-  background-color: #d9e0c3;
-  border-color: #eef2e2;
+  background-color: #d6dbc5;
+  border-color: #d9e0c3;
   color: #352f44;
 }
 button {

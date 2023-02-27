@@ -37,7 +37,6 @@ if (minutes < 10) {
 clockTime.innerHTML = `${hours}:${minutes}`;
 
 function showTemperature(response) {
-  console.log(response.data);
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
 
@@ -53,6 +52,12 @@ function showTemperature(response) {
   let wind = document.querySelector("#wind");
   let windValue = Math.round(response.data.wind.speed);
   wind.innerHTML = `${windValue}`;
+
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = response.data.weather[0].description;
