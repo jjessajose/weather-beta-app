@@ -36,6 +36,27 @@ if (minutes < 10) {
 }
 clockTime.innerHTML = `${hours}:${minutes}`;
 
+function showForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Sat", "Sun", "Mon", "Tues"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col-2">
+                ${day}
+              <br />
+              <div class="temp"><strong>34°c</strong> | 4°c</div>
+              <span class="material-symbols-outlined"> cloud </span>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
@@ -118,3 +139,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+showForecast();
