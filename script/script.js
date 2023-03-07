@@ -36,25 +36,52 @@ if (minutes < 10) {
 }
 clockTime.innerHTML = `${hours}:${minutes}`;
 
-function showForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function showForecast(response) {
+  let dailyForecast = response.data.daily;
   let forecast = document.querySelector("#forecast");
 
-  let days = ["Sat", "Sun", "Mon", "Tues"];
-
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-2">
-                ${day}
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+                ${formatDay(forecastDay.dt)}
               <br />
-              <div class="temp"><strong>34°c</strong> | 4°c</div>
-              <span class="material-symbols-outlined"> cloud </span>
+              <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+              <div class="temp">${Math.round(
+                forecastDay.temp.max
+              )}<strong>°c</strong> | ${Math.round(
+          forecastDay.temp.min
+        )}°c</div>
+           
             </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+function getForecast(coordinates) {
+  let apiKey = `f3887e262c88d1158f7e2ef4998e234c`;
+  let unit = `metric`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+
+  axios.get(apiURL).then(showForecast);
 }
 
 function showTemperature(response) {
@@ -82,6 +109,8 @@ function showTemperature(response) {
 
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = response.data.weather[0].description;
+
+  getForecast(response.data.coord);
 }
 
 function search(cityInput) {
@@ -139,4 +168,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
-showForecast();
+search("London");
