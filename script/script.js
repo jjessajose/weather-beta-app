@@ -63,11 +63,9 @@ function showForecast(response) {
           alt=""
           width="42"
         />
-              <div class="temp">${Math.round(
+              <div class="temp"><strong>${Math.round(
                 forecastDay.temp.max
-              )}<strong>°c</strong> | ${Math.round(
-          forecastDay.temp.min
-        )}°c</div>
+              )}°c</strong>  ${Math.round(forecastDay.temp.min)}°c</div>
            
             </div>`;
     }
