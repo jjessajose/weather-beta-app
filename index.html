@@ -46,11 +46,14 @@
             <br />
             <img src"" id="icon"/>
           </h3>
+          
+         
           <ul>
             <li id="weather-description"></li>
             <li>Humidity: <span id="humidity"></span>%</li>
             <li>Wind: <span id="wind"></span>m/h</li>
           </ul>
+         
 
           <form id="city-search">
             <div class="form-group">
@@ -62,17 +65,23 @@
                 autofocus
                 autocomplete="off"
               />
-            </div>
-
-            <input type="submit" value="Search" class="btn btn-info" />
+           <br />
+          <input 
+          type="submit" 
+          value="🔍" 
+          class="btn btn-info" 
+          id="button-search"
+          />
+          </div>  
           </form>
-          <br />
+      
           <input
             type="submit"
             id="geolocate"
-            value="Current Location"
+            value="📍"
             class="btn btn-info"
           />
+         
           <br />
 
           <div class="upcoming-forecast" id="forecast"> </div>

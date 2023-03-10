@@ -54,17 +54,31 @@ h3 {
 .row {
   font-family: "Poppins", sans-serif;
   color: #5c5470;
-  margin-top: 10px;
+  margin-top: -51px;
 }
 form {
   margin-right: 260px;
 }
-.btn-info {
+#button-search {
   color: #352f44;
   background-color: #d9e0c3;
   border-color: #d6dbc5;
+  margin-top: -116px;
+  margin-left: 215px;
 }
-.btn-info:hover {
+#button-search:hover {
+  background-color: #d6dbc5;
+  border-color: #d9e0c3;
+  color: #352f44;
+}
+#geolocate {
+  color: #352f44;
+  background-color: #d9e0c3;
+  border-color: #d6dbc5;
+  margin-top: -197px;
+  margin-left: 270px;
+}
+#geolocate:hover {
   background-color: #d6dbc5;
   border-color: #d9e0c3;
   color: #352f44;
@@ -75,12 +89,7 @@ button {
   border-color: #d9e0c3;
   font-family: "Poppins", sans-serif;
 }
-iframe {
-  position: absolute;
-  top: 170px;
-  right: 255px;
-  margin-bottom: 20px;
-}
+
 .temp {
   font-size: 13px;
   margin-top: 5px;
@@ -98,4 +107,8 @@ ul {
   font-family: "poppins", sans-serif;
   text-align: end;
   font-size: 15px;
+}
+#playlist {
+  position: absolute;
+  top: 177px;
 }
